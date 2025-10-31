@@ -11,13 +11,23 @@
  * @returns {number}
  */
 function countMatches(items, ruleKey, ruleValue) {
-    const keyIndex =
-    ruleKey === "type" ? 0 :
-    ruleKey === "color" ? 1 :
-    2;
-
-  // Step 2: Filter items that match and count them
-  return items.filter(item => item[keyIndex] === ruleValue).length;
+    let index;
+    //iterate through the every row
+    /* [[type, color, name]] 
+    [["phone","blue","pixel"],
+    ["computer","silver","lenovo"],
+    ["phone","gold","iphone"]]*/
+    if(ruleKey === 'type'){
+        index = 0;
+    }
+    if(ruleKey === 'color'){
+        index = 1;
+    }
+    if(ruleKey === 'name'){
+        index = 2;
+    }
+    
+    return items.filter(item => item[index] === ruleValue).length;
 }
 
 module.exports = countMatches;
